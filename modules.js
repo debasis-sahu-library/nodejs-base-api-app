@@ -1,0 +1,9 @@
+module.exports.Data={
+    "Meta":require("./modules/commons/mete_data"),
+    "IV":require("./modules/commons/input_validation"),
+    "DV":require("./modules/commons/data_validation")
+};
+module.exports.DB={
+    "test_db":require("./modules/databases/test_db")
+};
+module.exports.mdware=require("./modules/business_logics/middleware");

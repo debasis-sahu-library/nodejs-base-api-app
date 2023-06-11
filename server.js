@@ -2,8 +2,6 @@ var express = require("express");
 const bodyParser = require('body-parser');
 process["app"]=require("./process.app.json");
 
-var x=require("ireppo");
-
 var app = express();
 app.use(bodyParser.json());
 const bdprsr = bodyParser.urlencoded({ extended: false });
@@ -12,7 +10,8 @@ app.use((req, res, next) => {
     res.removeHeader("Date"); 
     next();
 });
-app.use(process.app.root,require("./routers"));
+const version="/"+((process.app.app_version).toString().toLowerCase().replace(/\//g,""))
+app.use(version,require("./routers"));
 app.use("/",(req,res)=>{
     var html=`<h1>Access denied</h1>`;
     res.send(html);
